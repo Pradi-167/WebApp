@@ -1,0 +1,478 @@
+/* General Body and Typography */
+body {
+    font-family: 'Montserrat', sans-serif, Arial, sans-serif;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Container might be useful if you add more wrappers, but main serves this for now */
+/* .container { ... } */
+
+header#appHeader {
+    background-color: #acae5a;
+    color: #ffffff;
+    padding: 1rem 40px; /* Adjusted padding slightly */
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Vertically align items in the center */
+}
+
+#headerLogo {
+    height: 60px; /* Adjust as needed, or use max-height */
+    width: auto; /* Maintain aspect ratio */
+    box-sizing: border-box;
+    box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+    margin-right: 20px; /* Space between logo and text */
+}
+
+#headerTextContainer {
+    text-align: left; /* Align header text to the left, good for when logo is present */
+    flex-grow: 1; /* Allows this container to take up remaining space if needed */
+}
+
+header#appHeader h1 {
+    margin-top: 0; /* Adjusted margin for flex alignment */
+    margin-bottom: 0.25rem; /* Adjusted margin */
+    font-size: 2.2em;
+    font-weight: 700;
+}
+
+header#appHeader p {
+    font-size: 1.1em;
+    margin-top: 0;
+}
+/* Video Banner Styles */
+#videoBannerContainer {
+    width: 100%;
+    height: 600px; /* Adjust height as needed, or use vh units e.g., 50vh */
+    overflow: hidden; /* Ensures parts of video outside container are clipped */
+    position: relative; /* For potential future overlay text */
+    background-color: #333; /* Fallback color if video is slow to load */
+}
+
+#bannerVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crucial: Scales video to cover container, cropping if necessary */
+    display: block; /* Removes extra space below the video */
+}
+
+/* Adjustments for Profile Section to appear below banner */
+#userProfileSection {
+    max-width: 600px;
+    margin: 30px auto; /* This should be fine, but ensure it's not overlapping */
+    padding: 30px;
+    background-color: #e8f5e9;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    position: relative; /* Added to ensure it's layered above if any absolute positioning was on banner */
+    z-index: 1; /* Ensures it's above the video if there were layering issues */
+}
+
+/* ... (rest of your CSS) ... */
+/* Profile Input Section */
+#userProfileSection {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #e8f5e9;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+#userProfileSection h2 {
+    color: #2e7d32;
+    margin-bottom: 25px;
+}
+
+.input-group { /* Used by Profile Section */
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+    font-size: 1.05em;
+}
+
+/* This single rule now standardizes all main input fields across the app */
+.input-group select,
+.input-group input[type="number"],
+.input-group input[type="text"],
+#dietPlannerModule .input-section select,
+#stressManagementModule .input-section select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    font-size: 1em;
+    background-color: #f8fdf8;
+    box-sizing: border-box;
+}
+
+/* General select styling, including custom arrow */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%204%205%22%3E%3Cpath%20fill%3D%22%234CAF50%22%20d%3D%22M2%200L0%202h4zm0%205L0%203h4z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+select:hover { border-color: #a5d6a7; }
+select:focus { border-color: #4CAF50; outline: none; box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.2); }
+
+
+/* Main Navigation */
+#mainNav {
+    width: 100%;
+    background-color: #acae5a;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    display: flex; /* Ensures buttons align nicely */
+    justify-content: center;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.nav-button {
+    background-color: transparent;
+    color: white;
+    padding: 10px 20px; /* Adjusted padding */
+    margin: 5px 8px; /* Added vertical margin for wrapping */
+    border: 1px solid white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em; /* Adjusted font size */
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-button:hover,
+.nav-button.active-nav {
+    background-color: white;
+    color: #388E3C;
+}
+
+/* Main Content Area */
+main#appMainContent {
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.module-section {
+    display: none; 
+    padding: 10px; /* Reduced padding for internal sections */
+    animation: fadeIn 0.5s ease-in-out;
+}
+.module-section.active-module { display: block; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.module-header {
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 15px;
+}
+.module-header h2 { color: #2e7d32; font-size: 1.8em; margin-bottom: 10px; } /* Adjusted size */
+.profile-recap { font-size: 0.9em; color: #555; font-style: italic; } /* Adjusted size */
+.profile-recap span { font-weight: bold; color: #333; }
+
+
+/* General Button Styling (for module buttons and profile save) */
+button {
+    background-color: orange; color: white; padding: 12px 22px; border: none; /* Adjusted padding */
+    border-radius: 8px; cursor: pointer; font-size: 1.05em; font-weight: 600; /* Adjusted size */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 15px; margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: block; 
+    margin-left: auto;
+    margin-right: auto;
+}
+#saveProfileBtn { /* Specific styling if needed, or make it wider */
+    min-width: 220px;
+}
+button:hover { background-color: #388E3C; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); }
+button:active { transform: translateY(0); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+
+/* Error Messages */
+.error-message {
+    color: #c46200; /* Darker orange for text */
+    background-color: #fff8e1; /* Light amber/yellow background */
+    border: 1px solid #ffab40; /* Strong orange for border */
+    padding: 10px 15px;
+    margin: 15px 0;
+    border-radius: 6px;
+    text-align: center;
+}
+/* Recommendation Sections (Common for modules) */
+.recommendation-section { /* Used by Exercise output divs & Stress output */
+    margin-bottom: 20px; padding: 15px; border: 1px solid #ddd;
+    border-radius: 5px; background-color: #f9f9f9;
+}
+.recommendations-output { /* Used by Diet output main wrapper */
+    margin-top: 30px; text-align: left;
+    border-top: 1px solid #e0e0e0; padding-top: 25px;
+}
+.recommendations-output > h3, /* Diet "Your Personalized Diet Plan" */
+#exercise-recommendations-area .recommendation-section > h3, /* Exercise sub-section titles */
+#exercise-workoutCategoriesPlansDiv > h3 { /* Exercise "Workout Categories & Plans" */
+    color: #35424a; margin-top: 0px; margin-bottom: 15px;
+    border-bottom: 1px solid #eee; padding-bottom: 8px;
+    font-size: 1.4em; font-weight: 600;
+}
+.info-section { 
+    margin-bottom: 20px; padding: 15px; border: 1px solid #e0e0e0;
+    border-radius: 5px; background-color: #f9f9f9;
+}
+.info-section h4 { color: #35424a; margin-top: 0; font-size: 1.2em; }
+.info-section ul { list-style-type: disc; padding-left: 20px; margin-bottom: 0; }
+.info-section ul li { margin-bottom: 8px; color: #444; line-height: 1.6; font-size: 0.95em; }
+
+
+/* Diet Planner Specific Styles */
+#dietPlannerModule .input-section { /* Specific for Diet food type select */
+    max-width: 500px; margin: 20px auto; padding: 15px;
+    background-color: #f0fdfc; border-radius: 8px; border: 1px solid #c8e6c9;
+}
+.food-selection-area {
+    margin-top: 25px; padding: 20px; background-color: #e8f5e9;
+    border: 1px solid #c8e6c9; border-radius: 10px; text-align: center;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.food-selection-area h4 { /* "Select Foods to Add..." */
+    color: #1b5e20; font-size: 1.3em; margin-bottom: 10px;
+}
+.food-selection-area .instruction { font-size: 0.9em; color: #555; margin-bottom: 20px; }
+.food-category-selectors {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 15px; margin-top: 20px;
+}
+.food-category-selector {
+    background-color: #ffffff; border: 1px solid #a5d6a7; border-radius: 8px;
+    padding: 15px; text-align: left; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex; flex-direction: column;
+}
+.food-category-selector label { /* Label for each select listbox */
+    font-size: 1.1em; margin-bottom: 10px; color: #1b5e20; font-weight: 600; text-align: center; 
+}
+.food-category-selector select { /* Listbox style */
+    margin-top: 5px; height: auto; min-height: 40px; font-size: 0.95em;
+    border: 1px solid #81c784; border-radius: 6px; background-color: #f0fdfc;
+    padding: 8px; 
+    background-image: none; /* Remove arrow for listbox presentation */
+}
+.selected-items-tags-container {
+    margin-top: 12px; padding-top: 8px; border-top: 1px dashed #e0ffe0;
+    display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-start; min-height: 25px;
+}
+.selected-item-tag {
+    background-color: #d1e7dd; border: 1px solid #8bc34a; border-radius: 20px;
+    padding: 6px 10px 6px 15px; font-size: 0.9em; color: #2e7d32;
+    display: inline-flex; align-items: center; gap: 5px; white-space: nowrap;
+}
+.selected-item-tag .remove-btn {
+    background: none; border: none; color: #2e7d32; font-weight: bold; cursor: pointer;
+    font-size: 1.2em; line-height: 1; padding: 0 0 0 5px;
+}
+.selected-item-tag .remove-btn:hover { color: #d32f2f; }
+.selected-item-tag input[type="number"].quantity-input {
+    width: 55px; padding: 4px 6px; border: 1px solid #a5d6a7; border-radius: 4px;
+    font-size: 0.9em; text-align: center; margin-left: 5px; -moz-appearance: textfield;
+}
+.selected-item-tag input[type="number"].quantity-input::-webkit-outer-spin-button,
+.selected-item-tag input[type="number"].quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none; margin: 0;
+}
+.selected-item-tag .unit-span { font-size: 0.85em; color: #555; margin-left: 2px; }
+
+.custom-plan-output {
+    margin-top: 30px; padding: 20px; background-color: #e3f2fd;
+    border: 1px solid #90caf9; border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.custom-plan-output > h4 { /* "My Food Plan & Nutrition:" */
+    color: #1976d2; border-bottom: 2px solid #64b5f6; font-size: 1.6em;
+    text-align: center; font-weight: 600; margin-bottom: 20px; padding-bottom: 10px;
+}
+#selected-foods-diet-display { text-align: left; padding: 10px 0; }
+.selected-food-category {
+    background-color: #f7fcff; border: 1px solid #bbdefb; border-radius: 8px;
+    margin-bottom: 15px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.selected-food-category h4 { /* For category names like "Fruits (Recommended)" */
+    color: #0d47a1; margin-top: 0; margin-bottom: 10px; font-size: 1.2em; /* Adjusted size */
+    border-bottom: 1px solid #90caf9; padding-bottom: 6px; font-weight: 600;
+}
+.nutrition-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.85em; } /* Adjusted size */
+.nutrition-table th, .nutrition-table td { border: 1px solid #ddd; padding: 6px; text-align: left; } /* Adjusted padding */
+.nutrition-table th { background-color: #e3f2fd; font-weight: bold; }
+.nutrition-table tfoot td, .nutrition-table .category-totals-row td { font-weight: bold; background-color: #cfe9fc; }
+.grand-totals-summary { margin-top: 20px; padding: 15px; background-color: #fff8e1; border: 1px solid #ffecb3; border-radius: 4px; }
+.grand-totals-summary h3 { margin-top: 0; color: #c07d00; font-size: 1.2em; } /* Adjusted size */
+.empty-plan-message { color: #777; font-style: italic; text-align: center; padding: 15px; }
+.nutrition-disclaimer { font-size: 0.8em; color: #666; margin-top: 10px; text-align: center; }
+
+
+/* Exercise Advisor Specific Styles (Harmonized) */
+#exercise-recommendations-area .recommendation-section ul { list-style-type: disc; margin-left: 20px; }
+#exercise-recommendations-area .recommendation-section li { margin-bottom: 8px; font-size: 0.95em; }
+#exercise-recommendations-area .recommendation-section table {
+    width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.85em; /* Adjusted size */
+}
+#exercise-recommendations-area .recommendation-section th, 
+#exercise-recommendations-area .recommendation-section td {
+    border: 1px solid #ddd; padding: 6px; text-align: left; /* Adjusted padding */
+}
+#exercise-recommendations-area .recommendation-section th { background-color: #e9ecef; font-weight: bold; }
+
+
+/* Stress Management Module Specific Styles */
+#stressManagementModule .input-section.sm-input-section {
+    max-width: 500px; margin: 20px auto; padding: 20px;
+    background-color: #f0fdfc; border: 1px solid #dcedc8;
+    border-radius: 8px;
+}
+#stressManagementModule .input-section.sm-input-section label { color: #00796b; }
+.session-output-sm { /* Used by hubStressSessionOutput which has recommendation-section base */
+    margin-top: 20px;
+    /* background-color: #f0fdfc; */ /* Optional: can inherit or override */
+}
+.session-output-sm h4 { /* Title like "Now starting..." */
+    color: #2e7d32; font-size: 1.3em; margin-bottom: 15px; /* Adjusted size */
+}
+.session-output-sm .tonality-details {
+    margin-top: 15px; padding: 12px; background-color: #e0f2f1;
+    border-left: 5px solid #00796b; border-radius: 4px; font-size: 0.9em; /* Adjusted size */
+}
+.session-output-sm .tonality-details strong { color: #004d40; }
+.session-output-sm .tonality-details ul { list-style-position: inside; padding-left: 0; margin-top: 5px; }
+.session-output-sm .tonality-details li { margin-bottom: 5px; font-size: 0.95em; }
+.session-output-sm .session-status,
+.session-output-sm .session-complete {
+    font-weight: bold; margin-top: 15px; padding: 10px; /* Adjusted padding */
+    border-radius: 4px; text-align: center; font-size: 1em;
+}
+.session-output-sm .session-status { color: #1565c0; background-color: #e3f2fd; }
+.session-output-sm .session-complete { color: #2e7d32; background-color: #dcedc8; }
+.session-output-sm #hubEndSessionBtnSimulated { /* ID specific to Hub's stress module button */
+    background-color: #d9534f; color: white;
+}
+.session-output-sm #hubEndSessionBtnSimulated:hover { background-color: #c9302c; }
+
+/* Vitals Advisor Module Specific Styles */
+.feedback-panel {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-left-width: 5px;
+    border-left-style: solid;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.feedback-panel h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+/* Color-coded feedback levels */
+.feedback-panel.level-good {
+    border-left-color: #2e7d32; /* Green */
+    background-color: #e8f5e9;
+}
+.feedback-panel.level-good h4 {
+    color: #1b5e20;
+}
+
+.feedback-panel.level-borderline {
+    border-left-color: #f57f17; /* Amber */
+    background-color: #fffde7;
+}
+.feedback-panel.level-borderline h4 {
+    color: #e65100;
+}
+
+.feedback-panel.level-low,
+.feedback-panel.level-high {
+    border-left-color: #d8000c; /* Red */
+    background-color: #ffdddd;
+}
+.feedback-panel.level-low h4,
+.feedback-panel.level-high h4 {
+    color: #b71c1c;
+}
+
+/* Footer */
+footer#appFooter {
+    text-align: center; padding: 20px; background-color: #35424a;
+    color: #ffffff; font-size: 0.85em; width: 100%; margin-top: 30px;
+    box-sizing: border-box;
+}
+footer#appFooter p { margin: 8px 0; }
+
+/* Responsive Adjustments from standalone apps, generalized */
+@media (max-width: 900px) {
+    .food-category-selector { flex: 1 1 calc(50% - 25px); } /* Adjusted gap for grid */
+}
+@media (max-width: 768px) {
+    header#appHeader h1 { font-size: 1.8em; }
+    header#appHeader p { font-size: 1em; }
+    .nav-button { padding: 10px 15px; font-size: 0.95em; }
+    .module-header h2 { font-size: 1.6em; }
+    button { padding: 12px 18px; font-size: 1em; }
+    .recommendations-output > h3, 
+    #exercise-recommendations-area .recommendation-section > h3,
+    #exercise-workoutCategoriesPlansDiv > h3 { font-size: 1.25em; }
+    .food-category-selector label { font-size: 1.05em; }
+    .session-output-sm h4 { font-size: 1.2em; }
+}
+@media (max-width: 650px) {
+    body { padding: 10px; }
+    main#appMainContent, #userProfileSection { padding: 15px; margin: 15px 10px; } /* Applied to profile section too */
+    header#appHeader h1 { font-size: 1.5em; }
+    #mainNav { flex-direction: column; }
+    .nav-button { width: calc(100% - 20px); margin: 5px 10px; }
+    .food-category-selector { flex: 1 1 100%; }
+    .custom-plan-output > h4, .selected-food-category h4 { font-size: 1.15em; }
+    .selected-item-tag { font-size: 0.8em; }
+    .nutrition-table, #exercise-recommendations-area .recommendation-section table { font-size: 0.75em; }
+    .nutrition-table th, .nutrition-table td,
+    #exercise-recommendations-area .recommendation-section th, 
+    #exercise-recommendations-area .recommendation-section td { padding: 4px; }
+    /* Inside your @media (max-width: 650px) { ... } block */
+
+    #exercise-regularWorkoutDiv,
+    #exercise-intensiveWorkoutDiv {
+  overflow-x: auto; /* This enables horizontal scrolling */
+  -webkit-overflow-scrolling: touch; /* This makes scrolling smooth on iOS devices */
+  padding-bottom: 10px; /* Adds a little space below the scrollbar */
+}
+}

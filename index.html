@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AyurWellness Hub - Integrated Health Advisor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="appHeader">
+        <img src="logo.png" alt="AyurWellness Hub Logo" id="headerLogo">
+        <div id="headerTextContainer"> 
+            <h1>Samavitals</h1>
+            <p>Your Personalized Ayurvedic Diet, Exercise & Stress Management Guide</p>
+        </div> 
+    </header>
+
+    <div id="videoBannerContainer">
+        <video autoplay muted loop playsinline id="bannerVideo">
+            <source src="banner-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <section id="userProfileSection">
+    <h2>Create Your Wellness Profile</h2>
+    
+    <div class="input-group">
+        <label for="profileNameInput">Enter Your Name:</label>
+        <input type="text" id="profileNameInput" placeholder="e.g., Alex">
+    </div>
+    <div class="input-group">
+        <label for="profileDoshaSelect">Select Your Predominant Dosha:</label>
+        <select id="profileDoshaSelect">
+            <option value="">--Select Dosha--</option>
+            <option value="Vata">Vata</option>
+            <option value="Pitta">Pitta</option>
+            <option value="Kapha">Kapha</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <label for="profileAgeInput">Enter Your Age:</label>
+        <input type="number" id="profileAgeInput" min="10" max="100" placeholder="e.g., 30">
+    </div>
+    <button id="saveProfileBtn">Save Profile & Access Hub</button>
+    <div id="profileErrorMessages" class="error-message" style="text-align:center;"></div>
+</section>
+
+    <nav id="mainNav" style="display: none;">
+        <button data-section="dashboardSection" class="nav-button active-nav">Dashboard</button>
+        <button data-section="dietPlannerModule" class="nav-button">Diet Planner</button>
+        <button data-section="exerciseAdvisorModule" class="nav-button">Exercise Advisor</button>
+        <button data-section="stressManagementModule" class="nav-button">Stress Management</button>
+        <button data-section="vitalsAdvisorModule" class="nav-button">Vitals Advisor</button>
+
+    </nav>
+
+    <main id="appMainContent" style="display: none;">
+        <section id="dashboardSection" class="module-section active-module">
+            <h2>Dashboard</h2>
+            <p id="dashboardWelcomeMessage">Welcome! Please complete your profile to see personalized content.</p>
+            <div id="dashboardSummary">
+                 <p>Select a module from the navigation above to get started with Diet, Exercise, or Stress Management planning.</p>
+            </div>
+        </section>
+
+        <section id="dietPlannerModule" class="module-section">
+            <div class="module-header">
+                <h2>Ayurvedic Diet & Nutrition Planner</h2>
+                <p class="profile-recap">Profile: Dosha - <span id="dietDoshaRecap">N/A</span>, Age - <span id="dietAgeRecap">N/A</span></p>
+            </div>
+            <div class="input-section">
+                <label for="food-type-select">Select Cultural Food Type (Optional):</label>
+                <select id="food-type-select">
+                    <option value="All">--No Preference / All Foods--</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Non-Vegetarian">Non-Vegetarian</option>
+                </select>
+            </div>
+            <button id="get-diet-recommendations-btn">Get Diet Recommendations</button>
+
+            <div id="diet-recommendations-output" class="recommendations-output" style="display: none;">
+                <h3>Your Personalized Diet Plan</h3>
+                <div id="diet-dosha-characteristics" class="info-section"></div>
+                <div class="food-selection-area">
+                    <h4>Select Foods to Add to Your Plan:</h4>
+                    <p class="instruction">Choose an item from the listbox to add it below. Then, specify the quantity (in grams). Click an item's '×' to remove it.</p>
+                    <div id="diet-food-categories-pacifying" class="food-category-selectors"></div>
+                    <div id="diet-food-categories-aggravating" class="food-category-selectors"></div>
+                     </div>
+                <button id="show-custom-diet-plan-btn">Show My Food Plan & Nutrition</button>
+                <div id="custom-diet-plan-output" class="custom-plan-output" style="display: none;">
+                    <h4>My Food Plan & Nutrition:</h4>
+                    <div id="selected-foods-diet-display">
+                        <p class="empty-plan-message">No foods selected yet. Use the lists above to customize your plan.</p>
+                    </div>
+                </div>
+                <div id="diet-preparation-eating-practices" class="info-section">
+                    <h4>Preparation and Eating Practices:</h4>
+                    <ul>
+                        <li>Prefer freshly cooked rather than processed or stale food.</li>
+                        <li>Eat under relaxed conditions and slowly, pausing between mouthfuls.</li>
+                        <li>Maintain routine meal and sleeping times.</li>
+                        <li>Drink adequate water to support digestion.</li>
+                        <li>Moderation is key to maintaining balance.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="exerciseAdvisorModule" class="module-section">
+            <div class="module-header">
+                <h2>Ayurvedic Exercise Advisor</h2>
+                <p class="profile-recap">Profile: Dosha - <span id="exerciseDoshaRecap">N/A</span>, Age - <span id="exerciseAgeRecap">N/A</span></p>
+            </div>
+            <button id="get-exercise-recommendations-btn">Get Exercise Recommendations</button>
+            <div id="exercise-recommendations-area" style="display: none;">
+                <div id="exercise-errorMessages" class="error-message"></div>
+                <div id="exercise-howToUseGuideDiv" class="recommendation-section"></div>
+                <div id="exercise-thrDiv" class="recommendation-section"></div>
+                <div id="exercise-weeklyFrequencyByAgeDiv" class="recommendation-section"></div>
+                <div id="exercise-workoutCategoriesPlansDiv" class="recommendation-section">
+                    <h3>Workout Categories & Plans</h3>
+                    <p>These are general workout templates. Your personalized frequency for these workouts will be listed under your Dosha-specific recommendations below.</p>
+                    <div id="exercise-regularWorkoutDiv"></div>
+                    <div id="exercise-intensiveWorkoutDiv"></div>
+                    <div id="exercise-passiveWorkoutDiv"></div>
+                </div>
+                <div id="exercise-doshaSpecificRecommendationsDiv" class="recommendation-section"></div>
+                <div id="exercise-generalNotesDiv" class="recommendation-section"></div>
+                <div id="exercise-exerciseActionsToAvoidDiv" class="recommendation-section"></div>
+                <div id="exercise-externalResourcesDiv" class="recommendation-section"></div>
+            </div>
+        </section>
+
+        <section id="stressManagementModule" class="module-section">
+            <div class="module-header">
+                <h2>Stress Management & Hypnosis</h2>
+                <p class="profile-recap">Your Dosha: <span id="hubStressDoshaRecap">N/A</span></p>
+            </div>
+            <div class="input-section sm-input-section">
+                <label for="hubSessionDurationSelect">Select Your Stress Management Goal (Session Duration):</label>
+                <select id="hubSessionDurationSelect">
+                    <option value="">--Choose Session Length--</option>
+                    </select>
+            </div>
+            <button id="hubStartStressSessionBtn">Start Session</button>
+
+            <div id="hubStressSessionOutput" class="recommendation-section session-output-sm" style="display: none;">
+                </div>
+        </section>
+
+        </section>
+
+<section id="vitalsAdvisorModule" class="module-section">
+    <div class="module-header">
+        <h2>Vitals Advisor</h2>
+        <p>Get feedback on your Heart Rate Variability (HRV), Pulse, and SpO2 readings.</p>
+    </div>
+
+    <div id="vitalsInputSection" style="max-width: 500px; margin: 20px auto; padding: 20px; background-color: #f0f8ff; border: 1px solid #d1e5f0; border-radius: 8px;">
+        <div class="input-group">
+            <label for="vitalsAgeInput">Your Age:</label>
+            <input type="number" id="vitalsAgeInput" placeholder="e.g., 35" min="18" max="100">
+        </div>
+        <div class="input-group">
+            <label for="vitalsGenderSelect">Your Gender:</label>
+            <select id="vitalsGenderSelect">
+                <option value="">--Select Gender--</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="vitalsHrvInput">Heart Rate Variability (HRV ms):</label>
+            <input type="number" id="vitalsHrvInput" placeholder="e.g., 45">
+        </div>
+        <div class="input-group">
+            <label for="vitalsSpo2Input">SpO2 (%):</label>
+            <input type="number" id="vitalsSpo2Input" placeholder="e.g., 98" min="70" max="100">
+        </div>
+        <div class="input-group">
+            <label for="vitalsPulseInput">Resting Pulse (bpm):</label>
+            <input type="number" id="vitalsPulseInput" placeholder="e.g., 65">
+        </div>
+        <button id="getVitalsFeedbackBtn">Analyze Vitals</button>
+    </div>
+
+    <div id="vitalsFeedbackOutput" class="recommendations-output" style="display: none; margin-top: 30px;">
+        <h3>Your Vitals Analysis</h3>
+        </div>
+</section>
+
+
+</main> ```
+
+    </main>
+
+    <footer id="appFooter">
+        <p>Disclaimer: The information provided is based on traditional Ayurvedic knowledge and general health guidelines. Always consult with a qualified healthcare professional or certified practitioner before making any changes to your diet, exercise program, or stress management practices, especially if you have underlying health conditions. Nutritional information is estimated. Specific exercise advice should be tailored by a professional. Hypnotherapy scripts are for general well-being and not a substitute for professional therapy for clinical conditions.</p>
+        <p>© AyurWellness Hub</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
